@@ -9,6 +9,7 @@ C:\gdzie-leży-plik-zabka.sql>"C:\Program Files\MySQL\MySQL Server 8.0\bin\mysql
 dalej wpisujecie hasło, które ustawialiście, kiedy instalowaliście mysql, jeśli wszystko się powiedzie, to będzie pusta linia
 
 Jeśli wszystko git, to:
+
 C:\gdzie-leży-plik-zabka.sql>"C:\Program Files\MySQL\MySQL Server 8.0\bin\mysql.exe" -u root -p zabka
 tak się uruchamia bd
 musi być taki zanczek "mysql>"
