@@ -88,10 +88,10 @@ CREATE TABLE Pickup (
 
 /* INSERT DATA */
 REPLACE INTO User_info (user_id, name, surname, mail, phone_number, city, street, post_code, location_range, diet_type, gender, points, password_hash, role) VALUES
-(1, 'Jan', 'Kowalski', 'jan.kowalski@o2.pl', 48501234567, 'Warszawa', 'Marszałkowska 10', '00-001', 10.5, 'wegetariańska', 'male', 100, '4ef666357246a0fdc62fe6e38106354c351bc4fcc9dc0675a9f5c99660b64782', 'app'),
-(2, 'Anna', 'Nowak', 'anna.nowak@wpl.pl', 48502345678, 'Kraków', 'Długa 5', '30-002', 15.2, 'mięsna', 'female', 200, 'd0329a970f435e29ba5832431cafb979f9822be089700f5e6ca1a92353f12136', 'app'),
-(3, 'Piotr', 'Wiśniewski', 'piotr.wisniewski@gmail.com', 555666777, 'Gdańsk', 'Grunwaldzka 5', '80-001', 8.0, 'bezglutenowa', 'male', 200, '098f6bcd4621d373cade4e832627b4f6', 'app'),
-(4, 'Katarzyna', 'Lis', 'katarzyna.lis@gmail.com', 444333222, 'Wrocław', 'Świdnicka 22', '50-001', 12.0, 'mięsna', 'female', 150, '25d55ad283aa400af464c76d713c07ad', 'app'),
+(1, 'Jan', 'Kowalski', 'jan.kowalski@o2.pl', 48501234567, 'Warszawa', 'Marszałkowska 10', '00-001', 10.5, 'wegetariańska', 'male', 100, '4ef666357246a0fdc62fe6e38106354c351bc4fcc9dc0675a9f5c99660b64782', 'client'),
+(2, 'Anna', 'Nowak', 'anna.nowak@wpl.pl', 48502345678, 'Kraków', 'Długa 5', '30-002', 15.2, 'mięsna', 'female', 200, 'd0329a970f435e29ba5832431cafb979f9822be089700f5e6ca1a92353f12136', 'client'),
+(3, 'Piotr', 'Wiśniewski', 'piotr.wisniewski@gmail.com', 555666777, 'Gdańsk', 'Grunwaldzka 5', '80-001', 8.0, 'bezglutenowa', 'male', 200, '098f6bcd4621d373cade4e832627b4f6', 'client'),
+(4, 'Katarzyna', 'Lis', 'katarzyna.lis@gmail.com', 444333222, 'Wrocław', 'Świdnicka 22', '50-001', 12.0, 'mięsna', 'female', 150, '25d55ad283aa400af464c76d713c07ad', 'client'),
 (5, 'Michał', 'Cal', 'michal.cal@gmail.com', 444333122, 'Wrocław', 'Świdnicka 22', '50-001', 12.0, 'mięsna', 'female', 150, '01cb73529cc450d00a5df3dd09d17015dda25ba8d20dd4f08ad2df28b8219d0c', 'manager');
 
 
@@ -147,14 +147,11 @@ CREATE VIEW User_info_editable AS
 SELECT user_id, name, surname, mail, phone_number, city, street, post_code, location_range, diet_type, gender 
 FROM User_info;
 
-DROP USER IF EXISTS 'user1'@'localhost';
 DROP USER IF EXISTS 'manager'@'localhost';
-DROP USER IF EXISTS 'app'@'localhost';
+DROP USER IF EXISTS 'client'@'localhost';
 DROP USER IF EXISTS 'admin'@'localhost';
 
-CREATE USER 'user1'@'localhost' IDENTIFIED BY 'password0';
-GRANT SELECT, UPDATE ON User_info_editable TO 'user1'@'localhost';
-GRANT SELECT (points) ON User_info TO 'user1'@'localhost';
+
 
 CREATE USER 'manager'@'localhost' IDENTIFIED BY 'password1';
 GRANT INSERT, SELECT, UPDATE (size, price, diet_type, order_status, pickup_day, start_pickup_hours, end_pickup_hours) ON Package TO 'manager'@'localhost';
@@ -163,14 +160,14 @@ GRANT INSERT, SELECT, UPDATE(open_day, start_hours, end_hours) ON Shop_Open TO '
 GRANT SELECT ON User_info TO 'manager'@'localhost';
 GRANT SELECT ON Pickup TO 'manager'@'localhost';
 
-CREATE USER 'app'@'localhost' IDENTIFIED BY 'apppasswd';
-GRANT SELECT, UPDATE ON shop to 'app'@'localhost';
-GRANT SELECT, UPDATE ON package to 'app'@'localhost';
-GRANT SELECT, UPDATE ON pickup to 'app'@'localhost';
-GRANT SELECT, UPDATE ON Discount_Level TO 'app'@'localhost';
-GRANT SELECT, UPDATE(points) ON User_info TO 'app'@'localhost';
-GRANT INSERT ON User_info TO 'app'@'localhost';
-GRANT INSERT ON Pickup TO 'app'@'localhost';
+CREATE USER 'client'@'localhost' IDENTIFIED BY 'apppasswd';
+GRANT SELECT, UPDATE ON shop to 'client'@'localhost';
+GRANT SELECT, UPDATE ON package to 'client'@'localhost';
+GRANT SELECT, UPDATE ON pickup to 'client'@'localhost';
+GRANT SELECT, UPDATE ON Discount_Level TO 'client'@'localhost';
+GRANT SELECT, UPDATE(points) ON User_info TO 'client'@'localhost';
+GRANT INSERT ON User_info TO 'client'@'localhost';
+GRANT INSERT ON Pickup TO 'client'@'localhost';
 
 CREATE USER 'admin'@'localhost' IDENTIFIED BY 'password3';
 GRANT ALL PRIVILEGES ON *.* TO 'admin'@'localhost' WITH GRANT OPTION;
