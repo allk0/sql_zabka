@@ -5,23 +5,19 @@ import hashlib
 from flask_mysqldb import MySQL
 import MySQLdb
 
-# 👇 только нужные классы, без базового Config
 from config import AppUser, ManagerUser, AdminUser
 
 # Flask setup
 app = Flask(__name__)
 app.secret_key = 'supersekret'
 
-# 🟢 НАЧАЛЬНОЕ подключение по умолчанию — app
 app.config.from_object(AppUser)
 mysql = MySQL(app)
 
-# SQLAlchemy (если нужно)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://app:apppasswd@localhost/zabka?charset=utf8mb4'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
-# 👇 Умное переключение подключения по roli
 def get_mysql_by_role(role):
     import MySQLdb
     if role == 'manager':
@@ -45,7 +41,7 @@ def get_mysql_by_role(role):
     else:
         return MySQLdb.connect(
             host="localhost",
-            user="app",
+            user="client",
             passwd="apppasswd",
             db="zabka",
             charset='utf8mb4',
