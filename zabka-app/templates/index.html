@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Dostępne paczki{% endblock %}
+{% block content %}
+<h2>Dostępne paczki do odbioru</h2>
+
+<table border="1" cellpadding="6">
+  <tr>
+    <th>Rozmiar</th>
+    <th>Cena</th>
+    <th>Dieta</th>
+    <th>Miasto</th>
+    <th>Ulica</th>
+    <th>Dzień odbioru</th>
+<th>Godziny odbioru</th>
+<th>Akcja</th>
+</tr>
+{% for package in packages %}
+<tr>
+  <td>{{ package.size }}</td>
+  <td>{{ package.price }} zł</td>
+  <td>{{ package.diet_type }}</td>
+  <td>{{ package.city }}</td>
+  <td>{{ package.street }}</td>
+  <td>{{ package.pickup_day }}</td>
+  <td>{{ package.start_pickup_hours }} - {{ package.end_pickup_hours }}</td>
+  <td>
+  {% if package.package_id in ordered_ids %}
+    <button disabled>Zamówiono</button>
+  {% else %}
+    <form method="POST" action="{{ url_for('order_package') }}">
+      <input type="hidden" name="package_id" value="{{ package.package_id }}">
+      <button type="submit">Zamów</button>
+    </form>
+  {% endif %}
+</td>
+
+</tr>
+
+  {% endfor %}
+</table>
+{% endblock %}

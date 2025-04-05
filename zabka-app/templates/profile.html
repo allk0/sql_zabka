@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Twój profil{% endblock %}
+{% block content %}
+<h2>Historia odbiorów</h2>
+
+<p><strong>Użytkownik:</strong> {{ session.user_name }} | <strong>Punkty:</strong> {{ session.points }}</p>
+
+<table border="1" cellpadding="6">
+  <tr>
+    <th>Kod odbioru</th>
+    <th>Miasto</th>
+    <th>Ulica</th>
+    <th>Rozmiar</th>
+    <th>Cena</th>
+    <th>Dzień odbioru</th>
+    <th>Ocena</th>
+  </tr>
+  {% for o in orders %}
+  <tr>
+    <td>{{ o.pickup_code }}</td>
+    <td>{{ o.city }}</td>
+    <td>{{ o.street }}</td>
+    <td>{{ o.size }}</td>
+    <td>{{ o.price }} zł</td>
+    <td>{{ o.pickup_day }}</td>
+    <td>{{ o.rating }}/5</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

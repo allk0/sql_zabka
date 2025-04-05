@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block title %}Panel Menadżera{% endblock %}
+
+{% block content %}
+<h2>Dodaj paczkę</h2>
+
+<form method="POST">
+  <label>Rozmiar:
+    <input type="text" name="size" required>
+  </label><br>
+
+  <label>Cena:
+    <input type="number" name="price" required>
+  </label><br>
+
+  <label>Dieta:
+    <select name="diet_type">
+      <option value="mięsna">Mięsna</option>
+      <option value="wegetariańska">Wegetariańska</option>
+      <option value="wegańska">Wegańska</option>
+      <option value="bezglutenowa">Bezglutenowa</option>
+    </select>
+  </label><br>
+
+  <label>Status:
+    <select name="order_status">
+      <option value="Do odbioru">Do odbioru</option>
+      <option value="W realizacji">W realizacji</option>
+    </select>
+  </label><br>
+
+  <label>Dzień odbioru:
+    <input type="date" name="pickup_day" required>
+  </label><br>
+
+  <label>Godzina odbioru od:
+    <input type="datetime-local" name="start_pickup">
+  </label><br>
+
+  <label>Godzina odbioru do:
+    <input type="datetime-local" name="end_pickup">
+  </label><br>
+
+  <label>Sklep:
+    <select name="shop_id">
+      {% for shop in shops %}
+      <option value="{{ shop.shop_id }}">{{ shop.city }} - {{ shop.street }}</option>
+      {% endfor %}
+    </select>
+  </label><br><br>
+
+  <button type="submit">Dodaj paczkę</button>
+</form>
+{% endblock %}

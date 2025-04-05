@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta http-equiv="Content-Language" content="pl" >
+  <meta charset="UTF-8">
+  <title>Żabka</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header>
+    <h1>Żabka - Paczki Niespodzianki</h1>
+    <nav>
+      {% if session.logged_in %}
+        <a href="{{ url_for('index') }}">Strona główna</a> |
+        <a href="{{ url_for('profile') }}">Profil</a> |
+        <a href="{{ url_for('logout') }}">Wyloguj</a> |
+{% if session.logged_in and session.role == 'manager' %}
+    <a href="{{ url_for('manager_panel') }}">Panel Menadżera</a>
+{% endif %}
+{% if session.logged_in and session.role == 'admin' %}
+    <a href="{{ url_for('admin_panel') }}">Panel Admina</a>
+{% endif %}
+
+
+      {% else %}
+        <a href="{{ url_for('login') }}">Logowanie</a>
+      {% endif %}
+    </nav>
+    <hr>
+  </header>
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+</body>
+</html>

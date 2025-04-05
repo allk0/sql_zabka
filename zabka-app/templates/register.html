@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}Rejestracja{% endblock %}
+
+{% block content %}
+    <h2>Utwórz konto</h2>
+
+    <form method="POST" class="register-form">
+        <label>Imię:
+            <input type="text" name="name" required>
+        </label>
+
+        <label>Nazwisko:
+            <input type="text" name="surname" required>
+        </label>
+
+        <label>Email:
+            <input type="email" name="email" required>
+        </label>
+
+        <label>Hasło:
+            <input type="password" name="password" required>
+        </label>
+
+        <label>Miasto:
+            <input type="text" name="city">
+        </label>
+
+        <label>Ulica:
+            <input type="text" name="street">
+        </label>
+
+        <label>Kod pocztowy:
+            <input type="text" name="post_code">
+        </label>
+
+        <label>Dieta:
+            <select name="diet_type">
+                <option value="mięsna">Mięsna</option>
+                <option value="wegetariańska">Wegetariańska</option>
+                <option value="wegańska">Wegańska</option>
+                <option value="bezglutenowa">Bezglutenowa</option>
+            </select>
+        </label>
+
+        <button type="submit">Zarejestruj się</button>
+    </form>
+{% endblock %}

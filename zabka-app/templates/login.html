@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Logowanie{% endblock %}
+{% block content %}
+<h2>Zaloguj się</h2>
+<form method="POST">
+  <label>Email: <input type="email" name="email" required></label><br><br>
+  <label>Hasło: <input type="password" name="password" required></label><br><br>
+  <button type="submit">Zaloguj</button>
+  <p>Nie masz konta? <a href="{{ url_for('register') }}">Zarejestruj się</a></p>
+
+</form>
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul style="color:red">
+      {% for message in messages %}
+        <li>{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+{% endblock %}
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul style="color:red">
+      {% for message in messages %}
+        {% if "błędne" in message|lower or "hasło" in message|lower %}
+          <li>{{ message }}</li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
