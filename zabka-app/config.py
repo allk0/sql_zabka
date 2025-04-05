@@ -1,6 +1,3 @@
-from flask import Flask
-from flask_mysqldb import MySQL
-from sqlalchemy.engine import URL
 
 class Config:
     SECRET_KEY = 'tajne'
@@ -15,7 +12,7 @@ class Config:
         return f"mysql+pymysql://{user}:{password}@localhost/zabka?charset=utf8mb4"
 
 class AppUser(Config):
-    MYSQL_USER = 'app'
+    MYSQL_USER = 'client'
     MYSQL_PASSWORD = 'apppasswd'
     SQLALCHEMY_DATABASE_URI = Config.sqlalchemy_uri(MYSQL_USER, MYSQL_PASSWORD)
 
