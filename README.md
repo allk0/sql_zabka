@@ -6,8 +6,8 @@ jak uruchomić na Win:
 
 C:\gdzie-leży-plik-zabka.sql>"C:\Program Files\MySQL\MySQL Server 8.0\bin\mysql.exe" -u root -p zabka < zabka.sql
 
-dalej wpisujecie hasło, które ustawialiście, kiedy instalowaliście mysql, jeśli wszystko ię poweidzie, co będzie pusta linia
-jeśli wszystko dobrze, to:
+dalej wpisujecie hasło, które ustawialiście, kiedy instalowaliście mysql, jeśli wszystko się powiedzie, to będzie pusta linia
+Jeśli wszystko git, to:
 C:\gdzie-leży-plik-zabka.sql>"C:\Program Files\MySQL\MySQL Server 8.0\bin\mysql.exe" -u root -p zabka
 tak się uruchamia bd
 musi być taki zanczek "mysql>"
