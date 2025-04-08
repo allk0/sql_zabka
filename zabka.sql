@@ -87,27 +87,26 @@ CREATE TABLE Pickup (
 ) CHARACTER SET utf8mb4 COLLATE utf8mb4_polish_ci;
 
 /* INSERT DATA */
-REPLACE INTO User_info (user_id, name, surname, mail, phone_number, city, street, post_code, location_range, diet_type, gender, points, password_hash, role) VALUES
-(1, 'Jan', 'Kowalski', 'jan.kowalski@o2.pl', 48501234567, 'Warszawa', 'Marszałkowska 10', '00-001', 10.5, 'wegetariańska', 'male', 100, '4ef666357246a0fdc62fe6e38106354c351bc4fcc9dc0675a9f5c99660b64782', 'client'),
-(2, 'Anna', 'Nowak', 'anna.nowak@wpl.pl', 48502345678, 'Kraków', 'Długa 5', '30-002', 15.2, 'mięsna', 'female', 200, 'd0329a970f435e29ba5832431cafb979f9822be089700f5e6ca1a92353f12136', 'client'),
-(3, 'Piotr', 'Wiśniewski', 'piotr.wisniewski@gmail.com', 555666777, 'Gdańsk', 'Grunwaldzka 5', '80-001', 8.0, 'bezglutenowa', 'male', 200, '098f6bcd4621d373cade4e832627b4f6', 'client'),
-(4, 'Katarzyna', 'Lis', 'katarzyna.lis@gmail.com', 444333222, 'Wrocław', 'Świdnicka 22', '50-001', 12.0, 'mięsna', 'female', 150, '25d55ad283aa400af464c76d713c07ad', 'client'),
-(5, 'Michał', 'Cal', 'michal.cal@gmail.com', 444333122, 'Wrocław', 'Świdnicka 22', '50-001', 12.0, 'mięsna', 'female', 150, '01cb73529cc450d00a5df3dd09d17015dda25ba8d20dd4f08ad2df28b8219d0c', 'manager');
-
+INSERT INTO User_info (user_id, name, surname, mail, phone_number, city, street, post_code, location_range, diet_type, gender, points, password_hash, role) VALUES
+(1, 'Jan', 'Kowalski', 'jan.kowalski@o2.pl', 485012345, 'Warszawa', 'Marszalkowska 10', '00-001', 10.5, 'wegetarianska', 'male', 100, '4ef666357246a0fdc62fe6e38106354c351bc4fcc9dc0675a9f5c99660b64782', 'client'),
+(2, 'Anna', 'Nowak', 'anna.nowak@wpl.pl', 485023456, 'Krakow', 'Dluga 5', '30-002', 15.2, 'miesna', 'female', 200, 'd0329a970f435e29ba5832431cafb979f9822be089700f5e6ca1a92353f12136', 'client'),
+(3, 'Piotr', 'Wisniewski', 'piotr.wisniewski@gmail.com', 555666777, 'Gdansk', 'Grunwaldzka 5', '80-001', 8.0, 'bezglutenowa', 'male', 200, '7ee897b5572cfdd929f443065cb50f48ebae31de3d935b02f01e0bf54da608c5', 'client'),
+(4, 'Katarzyna', 'Lis', 'katarzyna.lis@gmail.com', 444333222, 'Wroclaw', 'Swidnicka 22', '50-001', 12.0, 'miesna', 'female', 150, 'af4a8a15189b726063a7032a92546ab8bbb907c67e61167a21f678eeab4d53f9', 'client'),
+(5, 'Michal', 'Cal', 'michal.cal@gmail.com', 444333122, 'Wrocław', 'Swidnicka 22', '50-001', 12.0, 'miesna', 'female', 150, '01cb73529cc450d00a5df3dd09d17015dda25ba8d20dd4f08ad2df28b8219d0c', 'manager');
 
 REPLACE INTO Shop (shop_id, city, street, post_code) VALUES 
-(1, 'Warszawa', 'Marszałkowska 10', '00-001'),
-(2, 'Kraków', 'Floriańska 20', '30-001'),
-(3, 'Gdańsk', 'Długa 33', '80-001'),
-(4, 'Wrocław', 'Piłsudskiego 44', '50-001');
+(1, 'Warszawa', 'Marszalkowska 10', '00-001'),
+(2, 'Krakow', 'Florianska 20', '30-001'),
+(3, 'Gdansk', 'Dluga 33', '80-001'),
+(4, 'Wroclaw', 'Pilsudskiego 44', '50-001');
 
 
 INSERT INTO Package (package_id, shop_id, size, price, diet_type, order_status, pickup_day, start_pickup_hours, end_pickup_hours) VALUES 
-(1, 1, 'Mała', 25, 'mięsna', 'Do odbioru', '2025-04-01', '2025-04-01 10:00:00', '2025-04-01 12:00:00'),
-(2, 2, 'Duża', 50, 'wegańska', 'Do odbioru', '2025-04-02', '2025-04-02 14:00:00', '2025-04-02 16:00:00'),
-(3, 3, 'Średnia', 40, 'bezglutenowa', 'Do odbioru', '2025-04-03', '2025-04-03 12:00:00', '2025-04-03 14:00:00'),
-(4, 4, 'Mała', 30, 'wegetariańska', 'W realizacji', '2025-04-04', '2025-04-04 09:00:00', '2025-04-04 11:00:00'),
-(5, 3, 'Średnia', 40, 'bezglutenowa', 'Do odbioru', '2025-04-03', '2025-04-03 12:00:00', '2025-04-03 12:00:00');
+(1, 1, 'Mala', 25, 'miesna', 'Do odbioru', '2025-04-01', '2025-04-01 10:00:00', '2025-04-01 12:00:00'),
+(2, 2, 'Duza', 50, 'weganska', 'Do odbioru', '2025-04-02', '2025-04-02 14:00:00', '2025-04-02 16:00:00'),
+(3, 3, 'Srednia', 40, 'bezglutenowa', 'Do odbioru', '2025-04-03', '2025-04-03 12:00:00', '2025-04-03 14:00:00'),
+(4, 4, 'Mala', 30, 'wegetarianska', 'W realizacji', '2025-04-04', '2025-04-04 09:00:00', '2025-04-04 11:00:00'),
+(5, 3, 'Srednia', 40, 'bezglutenowa', 'Do odbioru', '2025-04-03', '2025-04-03 12:00:00', '2025-04-03 12:00:00');
 
 
 INSERT INTO Shop_Open (id, shop_id, open_day, start_hours, end_hours) VALUES 
@@ -161,10 +160,7 @@ GRANT SELECT ON User_info TO 'manager'@'localhost';
 GRANT SELECT ON Pickup TO 'manager'@'localhost';
 
 CREATE USER 'client'@'localhost' IDENTIFIED BY 'apppasswd';
-GRANT SELECT, UPDATE ON shop to 'client'@'localhost';
 GRANT SELECT, UPDATE ON package to 'client'@'localhost';
-GRANT SELECT, UPDATE ON pickup to 'client'@'localhost';
-GRANT SELECT, UPDATE ON Discount_Level TO 'client'@'localhost';
 GRANT SELECT, UPDATE(points) ON User_info TO 'client'@'localhost';
 GRANT INSERT ON User_info TO 'client'@'localhost';
 GRANT INSERT ON Pickup TO 'client'@'localhost';
