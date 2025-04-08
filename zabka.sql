@@ -160,9 +160,8 @@ GRANT SELECT ON User_info TO 'manager'@'localhost';
 GRANT SELECT ON Pickup TO 'manager'@'localhost';
 
 CREATE USER 'client'@'localhost' IDENTIFIED BY 'apppasswd';
-GRANT SELECT, UPDATE ON package to 'client'@'localhost';
-GRANT SELECT, UPDATE(points) ON User_info TO 'client'@'localhost';
-GRANT INSERT ON User_info TO 'client'@'localhost';
+GRANT SELECT ON package to 'client'@'localhost';
+GRANT SELECT ON User_info TO 'client'@'localhost';
 GRANT INSERT ON Pickup TO 'client'@'localhost';
 
 CREATE USER 'admin'@'localhost' IDENTIFIED BY 'password3';
